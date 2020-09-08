@@ -51,7 +51,9 @@ const customTheme = {
   colors: {
     ...theme.colors,
     black: '#000000',
+
     gray: {
+      20: '#f5f5f5',
       50: '#333644',
     },
     green: {

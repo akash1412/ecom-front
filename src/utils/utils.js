@@ -51,3 +51,23 @@ const Items = [
 ];
 
 export default Items;
+
+export const addToCartFunc = (item, cartItemsArray) => {
+  const ItemExisting = cartItemsArray.find(
+    (cartItem) => cartItem.productId === item.productId
+  );
+
+  console.log(ItemExisting);
+
+  if (ItemExisting) {
+    return cartItemsArray.map((cartItem) => {
+      if (cartItem.productId === item.productId) {
+        return { ...cartItem, quantity: cartItem.quantity + 1 };
+      } else {
+        return cartItem;
+      }
+    });
+  }
+
+  return [...cartItemsArray, { ...item, quantity: 1 }];
+};

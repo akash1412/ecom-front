@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { Box, Heading, PseudoBox, Link, Avatar } from '@chakra-ui/core';
 import { AiOutlineCaretDown } from 'react-icons/ai';
@@ -11,16 +11,6 @@ import Greet from '../greet';
 import CartItemCount from '../cart-item-count/cart-item-count';
 
 const Navbar = ({ handleToggle }) => {
-  const profileRef = useRef();
-
-  React.useEffect(() => {
-    console.log(profileRef);
-    console.log(profileRef.current.className);
-    document
-      .querySelector(`.${profileRef.current.className}`)
-      .addEventListener('mousedown', () => {});
-  });
-
   return (
     <Box
       position="fixed"
@@ -59,7 +49,6 @@ const Navbar = ({ handleToggle }) => {
           overflow="hidden"
           _hover={{ opacity: '0.6' }}
           onClick={handleToggle}
-          ref={profileRef}
         >
           <Avatar src={avatar} fontSize="1px" />
           <Greet paddingX="2.5px" size="md" />

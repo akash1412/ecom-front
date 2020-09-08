@@ -2,7 +2,9 @@ import React, { createContext, useEffect, useState } from 'react';
 
 export const UserContext = createContext({
   name: '',
-  photo: '',
+  email: null,
+  photo: null,
+  role: null,
   setUser: () => {},
 });
 
@@ -20,16 +22,20 @@ const UserContextProvider = ({ children }) => {
 
   const [userDetails, setUserDetails] = useState({
     name: 'John Doe',
-    email: '',
-    photo: '',
+    email: null,
+    photo: null,
+    role: null,
   });
 
   const setUser = (userObj) => {
-    const { name, email, photo } = userObj;
+    const { name, email, photo, role } = userObj;
 
-    setUserDetails({ ...userDetails, name, email });
+    setUserDetails({ ...userDetails, name, email, role });
 
-    localStorage.setItem('userDetails', JSON.stringify({ name, email, photo }));
+    localStorage.setItem(
+      'userDetails',
+      JSON.stringify({ name, email, photo, role })
+    );
 
     console.log(userObj);
   };

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import Cart from '../../components/cart/cart';
+
 const ProfilePage = ({ match }) => {
   return (
     <>
@@ -10,6 +12,7 @@ const ProfilePage = ({ match }) => {
           exact
           render={() => <h1 style={{ color: '#fff' }}>profile view</h1>}
         />
+
         <Route
           path={`${match.url}/settings`}
           exact

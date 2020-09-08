@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import { Box, Image, Heading, Text, Skeleton } from '@chakra-ui/core';
-import { IoIosAddCircleOutline } from 'react-icons/io';
-import { BsCaretUp, BsCaretDown } from 'react-icons/bs';
+import React, { useState, useContext } from 'react';
 
-import axios from '../../API/API';
+import { Box, Image, Heading, Text, Skeleton, useToast } from '@chakra-ui/core';
+import { IoIosAddCircleOutline } from 'react-icons/io';
+import { BsCaretUp } from 'react-icons/bs';
+
+import { CartContext } from '../../context/cart-context/cart-context';
 
 import CardDrawer from '../card-drawer/card-drawer';
 
 const Card = ({ name, url, quantity, description, price, id }) => {
+  const { handleAddToCartFunc } = useContext(CartContext);
+
   const [imageLoad, setImageLoad] = useState(false);
 
   const [toggle, setToggle] = useState(false);
@@ -17,21 +20,7 @@ const Card = ({ name, url, quantity, description, price, id }) => {
   };
 
   const handleClick = async (product) => {
-    console.log(product);
-    const { id: productId, ...detail } = product;
-
-    try {
-      await axios({
-        url: '/cart',
-        params: {
-          productId,
-        },
-
-        data: { ...detail },
-      });
-    } catch (error) {
-      console.log(error.response.data);
-    }
+    await handleAddToCartFunc(product);
   };
 
   return (
@@ -84,7 +73,7 @@ const Card = ({ name, url, quantity, description, price, id }) => {
 
           <Box
             cursor="pointer"
-            onClick={() => handleClick({ name, price, id })}
+            onClick={() => handleClick({ name, price, id, url })}
           >
             <IoIosAddCircleOutline size="2.4rem" />
           </Box>

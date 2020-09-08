@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/core';
 import { ProductContext } from '../../context/products/products-context';
 
 import Card from '../../components/card/card';
+import ShowToast from '../../components/show-toast/show-toast';
 
 const Collection = ({ match }) => {
   const { handleFetch, products } = useContext(ProductContext);
@@ -12,7 +13,7 @@ const Collection = ({ match }) => {
   }, []);
 
   return (
-    <Box>
+    <Box minHeight="calc(100vh - 5rem)" position="relative">
       <h1>Collection: {match.params.category}</h1>
       <Box
         paddingY="2.5rem"
