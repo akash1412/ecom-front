@@ -1,53 +1,62 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from "react";
 import {
   Box,
   Heading,
   List,
   ListItem,
-  ListIcon,
   Image,
   Link,
   Skeleton,
-} from '@chakra-ui/core';
+} from "@chakra-ui/core";
 
-import Items from '../utils/utils';
+import "./sidebar.style.scss";
+
+import { SidebarContext } from "../../context/sidebar/sidebar-context";
+import Items from "../../utils/utils";
 
 const Sidebar = () => {
-  const [display, setDisplay] = useState(false);
+  const { toggleSidebar } = useContext(SidebarContext);
+
+  const [disIcon, setDisIcon] = useState(false);
 
   return (
     <Box
-      width="18%"
+      width={["18rem", "25rem", "25rem", "25rem"]}
+      // d={toggleSidebar ? "none" : "block"}
       height="calc(100vh - 5rem)"
+      className={toggleSidebar ? "openSidebar" : "closeSidebar"}
+      transition="transform 0.3s"
       top="5rem"
       left="0"
-      backgroundColor="white.100"
       position="sticky"
       borderTopRightRadius="10px"
       borderBottomRightRadius="10px"
+      borderBottomRightRadius="10px"
+      backgroundColor="black.100"
       display="flex"
       flexDir="column"
       paddingY="1.2rem"
+      pr="1.2rem"
       paddingLeft="2.5rem"
     >
-      <Heading size="2xl"> Explore</Heading>
       <List paddingTop="2rem">
         {Items.map(({ path, icon, name }) => (
-          <ListItem marginBottom="2rem" cursor="pointer" key={name}>
+          <ListItem key={name} marginBottom="2rem" cursor="pointer">
             <Link
               href={path}
               d="flex"
               alignItems="center"
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: "none" }}
               color="gray.50"
-              _active={{ color: 'gray.50' }}
+              _active={{ color: "#fff" }}
+              _hover={{ color: "#fff" }}
             >
-              <Skeleton colorStart="#000" colorEnd="#363434" isLoaded={display}>
+              <Skeleton colorStart="#000" colorEnd="#363434" isLoaded={disIcon}>
                 <Image
                   src={icon}
                   size="2.5rem"
                   marginRight="1rem"
-                  onLoad={() => setDisplay(true)}
+                  onLoad={() => setDisIcon(true)}
                 />
               </Skeleton>
               <Heading size="lg" marginLeft=".6rem">

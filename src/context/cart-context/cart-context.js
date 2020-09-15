@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { addToCartFunc } from '../../utils/utils';
+import { addToCartFunc, removeItemFromCart } from '../../utils/utils';
 
 export const CartContext = createContext({
   cartItems: [],
@@ -30,7 +30,7 @@ const CartContextProvider = ({ children }) => {
 
     console.log(response);
 
-    setCartItems([...response.data.cartItems]);
+    setCartItems([...response.data.data.cartItems]);
   };
 
   useEffect(() => {
@@ -66,6 +66,22 @@ const CartContextProvider = ({ children }) => {
     }
   };
 
+  const handleRemoveItemFromCart = async (cartItemToRemove) => {
+    setCartItems([...removeItemFromCart(cartItemToRemove, cartItems)]);
+
+    try {
+      await axios({
+        url: `http://localhost:82/api/v1/cart/${cartItemToRemove.productId}`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
+
   const handleToggleCartFunc = () => {
     setToggleCart(!toggleCart);
   };
@@ -75,10 +91,11 @@ const CartContextProvider = ({ children }) => {
       value={{
         cartItems,
         cartItemCount,
-        handleAddToCartFunc,
         getCartItemsFunc,
+        handleAddToCartFunc,
         toggleCart,
         handleToggleCartFunc,
+        handleRemoveItemFromCart,
       }}
     >
       {children}

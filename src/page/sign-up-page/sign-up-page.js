@@ -1,24 +1,24 @@
-import React, { useState, useContext } from 'react';
-import axios from 'axios';
-import { Box, Heading, PseudoBox } from '@chakra-ui/core';
-import FormInput from '../../components/FormInput/formInput';
-import InputContainer from '../../components/input-container';
-import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
-import { MdPersonOutline } from 'react-icons/md';
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { Box, Heading, PseudoBox } from "@chakra-ui/core";
+import FormInput from "../../components/FormInput/formInput";
+import InputContainer from "../../components/input-container";
+import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
+import { MdPersonOutline } from "react-icons/md";
 
-import { UserContext } from '../../context/userContext/userContext';
+import { UserContext } from "../../context/userContext/userContext";
 
 const SignUpPage = ({ history }) => {
   const { setUser } = useContext(UserContext);
 
   const [detail, setDetail] = useState({
-    name: '',
-    email: '',
-    password: '',
-    passwordConfirm: '',
+    name: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
   });
 
-  const [loading, setLoading] = useState('false');
+  const [loading, setLoading] = useState("false");
 
   const { name, email, password, passwordConfirm } = detail;
 
@@ -34,24 +34,24 @@ const SignUpPage = ({ history }) => {
     try {
       const resposne = await axios({
         headers: {},
-        url: 'http://localhost:82/api/v1/users/signup',
-        method: 'POST',
+        url: "http://localhost:82/api/v1/users/signup",
+        method: "POST",
         data: { ...detail },
       });
       console.log(resposne);
-      localStorage.setItem('jwt', resposne.data.token);
+      localStorage.setItem("jwt", resposne.data.token);
       setUser(resposne.data.data.user);
 
       setDetail({
         ...detail,
-        name: '',
-        password: '',
-        passwordConfirm: '',
-        email: '',
+        name: "",
+        password: "",
+        passwordConfirm: "",
+        email: "",
       });
-      // history.push('/');
+      history.push("/");
     } catch (error) {
-      console.log(error.resposne.data);
+      console.log(error.resposne?.data);
     }
   };
 
@@ -79,7 +79,7 @@ const SignUpPage = ({ history }) => {
         </Box>
         <form
           className="form"
-          style={{ width: '100%' }}
+          style={{ width: "100%" }}
           onSubmit={handleSubmit}
         >
           <InputContainer>
@@ -145,7 +145,7 @@ const SignUpPage = ({ history }) => {
             borderRadius=".5rem"
             cursor="pointer"
             backgroundColor="#fa446f"
-            _hover={{ backgroundColor: '#fa446edc' }}
+            _hover={{ backgroundColor: "#fa446edc" }}
           >
             Sign Up
           </PseudoBox>

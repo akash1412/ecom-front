@@ -1,38 +1,71 @@
-import React, { useRef, useEffect } from 'react';
-import { PseudoBox, Avatar, Box } from '@chakra-ui/core';
-import { AiOutlineCaretDown } from 'react-icons/ai';
+import React, { useRef, useEffect, useContext } from "react";
+import { PseudoBox, Avatar, Box } from "@chakra-ui/core";
+import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
 
-const ProfileOverview = ({ handleToggle }) => {
+import { DropDownContext } from "../../context/dropdown/dropdown";
+
+import Greet from "../greet";
+import avatar from "../../assets/icons/icons8-male-user.svg";
+import DropDown from "../dropdown/dropdown";
+
+const ProfileOverview = () => {
+  const { toggle, handleClick, handleDropdownOutsideClick } = useContext(
+    DropDownContext
+  );
+
   const ref = useRef();
 
-  console.log(ref.current);
+  const handleOutsideClickListener = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      handleDropdownOutsideClick();
+    } else {
+      return null;
+    }
+  };
+
   useEffect(() => {
-    console.log('profile');
-  });
+    document.addEventListener("mousedown", handleOutsideClickListener);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClickListener);
+    };
+  }, [ref]);
 
   return (
-    <PseudoBox
-      as="div"
-      d="flex"
-      alignItems="center"
-      cursor="pointer"
-      marginLeft="4rem"
-      backgroundColor="#000"
-      color="#fff"
-      // padding="3px 3px"
-      padding="1.5px"
-      borderRadius="2rem"
-      overflow="hidden"
-      _hover={{ backgroundColor: 'gray.50' }}
-      onClick={handleToggle}
-      ref={ref}
-    >
-      <Avatar src={avatar} fontSize="1px" />
-      <Greet paddingX="2.5px" size="md" />
-      <Box paddingX="4px">
-        <AiOutlineCaretDown size="1.4rem" />
-      </Box>
-    </PseudoBox>
+    <Box position="relative" ref={ref}>
+      <PseudoBox
+        as="div"
+        d="flex"
+        alignItems="center"
+        cursor="pointer"
+        marginLeft="4rem"
+        backgroundColor="#000"
+        _active={{ backgroundColor: "#000" }}
+        color="#fff"
+        // padding="3px 3px"
+        padding="1.5px"
+        borderRadius="2rem"
+        overflow="hidden"
+        _hover={{ backgroundColor: "gray.50" }}
+        onClick={handleClick}
+      >
+        <Avatar
+          src={avatar}
+          width={["1.8rem", "3rem", "3rem", "3rem"]}
+          height={["1.8rem", "3rem", "3rem", "3rem"]}
+        />
+        <Greet />
+        <Box paddingX="4px">
+          {toggle ? (
+            <AiOutlineCaretUp fontSize={["1.2rem", "2rem", "2rem", "2rem"]} />
+          ) : (
+            <AiOutlineCaretDown fontSize={["1.2rem", "2rem", "2rem", "2rem"]} />
+          )}
+        </Box>
+      </PseudoBox>
+
+      {toggle && <DropDown />}
+    </Box>
   );
 };
 

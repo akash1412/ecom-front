@@ -1,8 +1,12 @@
-import React from 'react';
-import { Box, Heading } from '@chakra-ui/core';
+import React from "react";
+import { Heading } from "@chakra-ui/core";
 
 const Logo = () => (
-  <Heading fontSize="2.5rem" alignSelf="center">
+  <Heading
+    fontSize={["1.2rem", "2.5rem", "2.5rem", "2.5rem"]}
+    alignSelf="center"
+    color="#fff"
+  >
     LA MORE
   </Heading>
 );

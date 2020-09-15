@@ -1,0 +1,14 @@
+.openSidebar {
+}
+
+.closeSidebar {
+}
+
+@media (max-width: 75em) {
+  .closeSidebar {
+    transform: translateX(-100%);
+  }
+  .openSidebar {
+    transform: translateX(0);
+  }
+}

@@ -3,7 +3,6 @@ import { Box } from '@chakra-ui/core';
 import { ProductContext } from '../../context/products/products-context';
 
 import Card from '../../components/card/card';
-import ShowToast from '../../components/show-toast/show-toast';
 
 const Collection = ({ match }) => {
   const { handleFetch, products } = useContext(ProductContext);
