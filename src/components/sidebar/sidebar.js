@@ -21,16 +21,14 @@ const Sidebar = () => {
 
   return (
     <Box
-      width={["18rem", "25rem", "25rem", "25rem"]}
-      // d={toggleSidebar ? "none" : "block"}
+      flexBasis={["25rem", "25rem", "25rem", "25rem"]}
       height="calc(100vh - 5rem)"
       className={toggleSidebar ? "openSidebar" : "closeSidebar"}
       transition="transform 0.3s"
       top="5rem"
       left="0"
-      position="sticky"
+      position={["fixed", "sticky", "sticky", "sticky"]}
       borderTopRightRadius="10px"
-      borderBottomRightRadius="10px"
       borderBottomRightRadius="10px"
       backgroundColor="black.100"
       display="flex"
@@ -38,6 +36,7 @@ const Sidebar = () => {
       paddingY="1.2rem"
       pr="1.2rem"
       paddingLeft="2.5rem"
+      zIndex="4"
     >
       <List paddingTop="2rem">
         {Items.map(({ path, icon, name }) => (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@chakra-ui/core";
 import theme from "./theme/theme";
@@ -23,11 +23,12 @@ function App() {
           <SidebarContextProvider>
             <ThemeProvider theme={theme}>
               <Navbar />
-              <Box display="flex" minHeight="100vh" position="relative">
+              <Box display="flex" position="relative" marginTop="5rem">
                 <Sidebar />
+
                 <Box
                   flexGrow="1"
-                  marginTop="5rem"
+                  // marginTop="5rem"
                   position="relative"
                   zIndex="1"
                 >

@@ -6,6 +6,8 @@ import { dropDownIcons } from "../../utils/utils";
 
 const token = localStorage.getItem("jwt");
 
+console.log(token);
+
 const AuthLink = () => {
   return (
     <Box
@@ -87,34 +89,30 @@ const UserOptions = () => (
     alignItems={token ? "center" : ""}
     justifyItems={token ? "center" : ""}
   >
-    {!token ? (
-      <AuthLink />
-    ) : (
-      dropDownIcons.map(({ icon, path, bgColor }) => (
-        <Link
-          backgroundColor={bgColor}
-          display="block"
-          pos="relative"
-          borderRadius="50%"
-          width="3rem"
-          width={["2.3rem", "3rem", "3rem", "3rem"]}
-          height={["2.3rem", "3rem", "3rem", "3rem"]}
-          padding="3px"
-          padding={["2px", "3px", "3px", "3px"]}
-          color="#fff"
-          href={path}
-        >
-          <Box
-            pos="absolute"
-            top="50%"
-            left="50%"
-            transform="translate(-50%,-50%)"
-            as={icon}
-            size={["1.7rem", "2.1rem", "2.1rem", "2.1rem"]}
-          />
-        </Link>
-      ))
-    )}
+    {dropDownIcons.map(({ icon, path, bgColor }) => (
+      <Link
+        backgroundColor={bgColor}
+        display="block"
+        pos="relative"
+        borderRadius="50%"
+        width="3rem"
+        width={["2.3rem", "3rem", "3rem", "3rem"]}
+        height={["2.3rem", "3rem", "3rem", "3rem"]}
+        padding="3px"
+        padding={["2px", "3px", "3px", "3px"]}
+        color="#fff"
+        href={path}
+      >
+        <Box
+          pos="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%,-50%)"
+          as={icon}
+          size={["1.7rem", "2.1rem", "2.1rem", "2.1rem"]}
+        />
+      </Link>
+    ))}
   </Box>
 );
 

@@ -1,7 +1,7 @@
-import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
-import { addToCartFunc, removeItemFromCart } from '../../utils/utils';
+import { addToCartFunc, removeItemFromCart } from "../../utils/utils";
 
 export const CartContext = createContext({
   cartItems: [],
@@ -11,7 +11,7 @@ export const CartContext = createContext({
 });
 
 const CartContextProvider = ({ children }) => {
-  const token = localStorage.getItem('jwt');
+  const token = localStorage.getItem("jwt");
 
   const [cartItems, setCartItems] = useState([]);
 
@@ -21,8 +21,8 @@ const CartContextProvider = ({ children }) => {
 
   const getCartItemsFunc = async () => {
     const response = await axios({
-      url: 'http://localhost:82/api/v1/cart',
-      method: 'GET',
+      url: "http://localhost:82/api/v1/cart",
+      method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -41,7 +41,7 @@ const CartContextProvider = ({ children }) => {
     const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
     setCartItemCount(count);
-  });
+  }, [cartItems]);
 
   const handleAddToCartFunc = async ({ id: productId, url, ...detail }) => {
     const values = addToCartFunc(
@@ -53,7 +53,7 @@ const CartContextProvider = ({ children }) => {
     try {
       const response = await axios({
         url: `http://localhost:82/api/v1/cart/${productId}`,
-        method: 'POST',
+        method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -72,7 +72,7 @@ const CartContextProvider = ({ children }) => {
     try {
       await axios({
         url: `http://localhost:82/api/v1/cart/${cartItemToRemove.productId}`,
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
         },

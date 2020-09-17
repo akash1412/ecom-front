@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import { Box, Heading, Image, Text, Button } from '@chakra-ui/core';
-import { FiShoppingCart } from 'react-icons/fi';
+import React, { useContext } from "react";
+import { Box, Heading, Image, Text } from "@chakra-ui/core";
+import { FiShoppingCart } from "react-icons/fi";
 
-import { TiDeleteOutline } from 'react-icons/ti';
+import { TiDeleteOutline } from "react-icons/ti";
 
-import ShoppingCart from '../../assets/icons/icons8-add-shopping-cart.svg';
+import ShoppingCart from "../../assets/icons/icons8-add-shopping-cart.svg";
 
-import { CartContext } from '../../context/cart-context/cart-context';
+import { CartContext } from "../../context/cart-context/cart-context";
 
 const Header = () => {
   return (
@@ -39,27 +39,6 @@ const NoCartItemPresent = () => (
     more Buttons will be added
   </Box>
 );
-
-// const spinner = () => {
-//   return (
-//     <Box
-//       position="absolute"
-//       top="50%"
-//       left="50%"
-//       transform="translate(-50%,-50%)"
-//     >
-//       <Spinner
-//         width="4rem"
-//         height="4rem"
-//         thickness="3px"
-//         speed="0.65s"
-//         emptyColor="#d9dad7"
-//         color="#333644"
-//         size="xl"
-//       />
-//     </Box>
-//   );
-// };
 
 const Cart = () => {
   const { cartItems, handleRemoveItemFromCart } = useContext(CartContext);

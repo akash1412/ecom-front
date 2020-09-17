@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Box, Heading, Link } from "@chakra-ui/core";
+import { Box } from "@chakra-ui/core";
 
-import SearchBar from "../searchbar";
+// import SearchBar from "../searchbar";
 
 import DropDownProvider from "../../context/dropdown/dropdown";
 
@@ -10,7 +10,7 @@ import ProfileOverview from "../profileOverview/profileOverview";
 
 import Logo from "../logo/logo";
 
-import CartItemCount from "../cart-item-count/cart-item-count";
+// import CartItemCount from "../cart-item-count/cart-item-count";
 import MenuIcon from "../menu-icon/menu-icon";
 
 const Navbar = () => {

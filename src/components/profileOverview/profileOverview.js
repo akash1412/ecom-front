@@ -29,7 +29,7 @@ const ProfileOverview = () => {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClickListener);
     };
-  }, [ref]);
+  }, [ref, handleOutsideClickListener]);
 
   return (
     <Box position="relative" ref={ref}>
@@ -54,7 +54,7 @@ const ProfileOverview = () => {
           width={["1.8rem", "3rem", "3rem", "3rem"]}
           height={["1.8rem", "3rem", "3rem", "3rem"]}
         />
-        <Greet />
+        <Greet px="2.5px" fontSize={["1rem", "1.2rem", "1.2rem", "1.2rem"]} />
         <Box paddingX="4px">
           {toggle ? (
             <AiOutlineCaretUp fontSize={["1.2rem", "2rem", "2rem", "2rem"]} />

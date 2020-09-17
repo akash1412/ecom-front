@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from 'react';
-import { Box } from '@chakra-ui/core';
-import { ProductContext } from '../../context/products/products-context';
+import React, { useEffect, useContext } from "react";
+import { Box } from "@chakra-ui/core";
+import { ProductContext } from "../../context/products/products-context";
 
-import Card from '../../components/card/card';
+import Card from "../../components/card/card";
 
 const Collection = ({ match }) => {
   const { handleFetch, products } = useContext(ProductContext);
@@ -17,7 +17,8 @@ const Collection = ({ match }) => {
       <Box
         paddingY="2.5rem"
         d="grid"
-        gridTemplateColumns="repeat(auto-fit, minmax(15rem, 26rem))"
+        // gridTemplateColumns="repeat(auto-fill, minmax(15rem, 26rem)"
+        gridTemplateColumns="repeat(auto-fill,minmax(15rem,26rem))"
         justifyContent="center"
         gridColumnGap="1.6rem"
         gridRowGap="2rem"

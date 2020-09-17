@@ -4,11 +4,11 @@ import { Heading } from "@chakra-ui/core";
 
 import { UserContext } from "../context/userContext/userContext";
 
-const Greet = () => {
+const Greet = ({ px, fontSize }) => {
   const { userDetails } = useContext(UserContext);
 
   return (
-    <Heading paddingX="2.5px" fontSize={["1rem", "1.2rem", "1.2rem", "1.2rem"]}>
+    <Heading px={px} fontSize={fontSize}>
       Hello ,{userDetails.name}
     </Heading>
   );

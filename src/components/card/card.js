@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext } from "react";
 
-import { Box, Image, Heading, Text, Skeleton, useToast } from '@chakra-ui/core';
-import { IoIosAddCircleOutline } from 'react-icons/io';
-import { BsCaretUp } from 'react-icons/bs';
+import { Box, Image, Heading, Text, Skeleton } from "@chakra-ui/core";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { BsCaretUp } from "react-icons/bs";
 
-import { CartContext } from '../../context/cart-context/cart-context';
+import { CartContext } from "../../context/cart-context/cart-context";
 
-import CardDrawer from '../card-drawer/card-drawer';
+import CardDrawer from "../card-drawer/card-drawer";
 
 const Card = ({ name, url, quantity, description, price, id }) => {
   const { handleAddToCartFunc } = useContext(CartContext);
@@ -30,7 +30,7 @@ const Card = ({ name, url, quantity, description, price, id }) => {
       color="#fff"
       d="flex"
       flexDir="column"
-      width="100%"
+      // width="26rem"
       height="30rem"
       borderRadius="1.2rem"
       overflow="hidden"
@@ -54,7 +54,6 @@ const Card = ({ name, url, quantity, description, price, id }) => {
       </Skeleton>
       <Box
         flexGrow="1"
-        paddingX="1.2px"
         d="flex"
         flexDir="column"
         justifyContent="space-around"

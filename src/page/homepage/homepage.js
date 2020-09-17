@@ -6,30 +6,15 @@ const HomePage = () => {
     <Box
       display="grid"
       justifyContent="center"
-      // gridTemplateColumns="29rem 26rem 25rem 25rem"
-      gridTemplateColumns="20% 20% 20% 20%"
-      gridTemplateColumns={[
-        "20% 20% 20% 20%",
-        "20% 20% 20% 20%",
-        "20% 20% 20% 20%",
-        "20% 20% 20% 20%",
-      ]}
-      // gridTemplateColumns="repeat(auto-fit,minmax(15%,20%))"
-      gridTemplateRows="20rem 15rem 20rem 15rem"
-      gridTemplateRows={[
-        "20rem 20rem 15rem 15rem",
-        "20rem 15rem 20rem 15rem",
-        "20rem 15rem 20rem 15rem",
-        "20rem 15rem 20rem 15rem",
-      ]}
+      gridTemplateColumns="29rem 26rem 25rem 25rem"
+      gridTemplateRows="1fr 15rem 20rem 15rem"
       gridAutoRows="20rem"
-      // gridTemplateRows="20% 15% 20% 15%"
       gridGap="2rem"
     >
       <Box
         backgroundColor="#82CDDF"
-        // gridColumn="1 / 3"
-        gridColumn={["1/5", "1/3", "1/3", "1/3"]}
+        gridColumn="1 / 3"
+        // gridColumn={["1/5", "1/3", "1/3", "1/3"]}
         gridRow="1 / 2"
         borderRadius="1.2rem"
         padding=".5rem"
@@ -45,9 +30,9 @@ const HomePage = () => {
       <Box
         backgroundColor="#D4D9DB"
         gridColumn="3/4"
-        gridColumn={["1/3", "3/4", "3/4", "3/4"]}
+        // gridColumn={["1/3", "3/4", "3/4", "3/4"]}
         gridRow="1/3"
-        gridRow={["2/3", "1/3", "1/3", "1/3"]}
+        // gridRow={["2/3", "1/3", "1/3", "1/3"]}
         borderRadius="1.2rem"
         overflow="hidden"
         cursor="pointer"
@@ -62,8 +47,8 @@ const HomePage = () => {
       <Box
         backgroundColor="#fabea7"
         gridColumn="4/5"
-        gridColumn={["3/5", "4/5", "4/5", "4/5"]}
-        // gridRow="1/3"
+        // gridColumn={["3/5", "4/5", "4/5", "4/5"]}
+        gridRow="1/3"
         borderRadius="1.2rem"
         overflow="hidden"
       >
@@ -78,9 +63,9 @@ const HomePage = () => {
         backgroundColor="gray.50"
         color="#fff"
         gridColumn="1 / 3"
-        gridColumn={["1/5", "1/3", "1/3", "1/3"]}
+        // gridColumn={["1/5", "1/3", "1/3", "1/3"]}
         gridRow="2 / 3"
-        gridRow={["3/4", "2/3", "2/3", "2/3"]}
+        // gridRow={["3/4", "2/3", "2/3", "2/3"]}
         borderRadius="1.2rem"
         d="flex"
         // justifyContent="center"
@@ -102,9 +87,9 @@ const HomePage = () => {
       <Box
         backgroundColor="#EEBC3E"
         gridColumn="3/5"
-        gridColumn={["1/3", "3/5", "3/5", "3/5"]}
+        // gridColumn={["1/3", "3/5", "3/5", "3/5"]}
         gridRow="3/4"
-        gridRow={["4/5", "3/4", "3/4", "3/4"]}
+        // gridRow={["4/5", "3/4", "3/4", "3/4"]}
         borderRadius="1.2rem"
         padding=".5rem"
         d="flex"
@@ -115,7 +100,7 @@ const HomePage = () => {
       </Box>
       <Box
         backgroundColor="#ffc1fa"
-        // gridRow="3/5"
+        gridRow="3/5"
         // gridRow={["", "3/5", "3/5", "3/5", "3/5"]}
         borderRadius="1.2rem"
         overflow="hidden"
@@ -160,6 +145,30 @@ const HomePage = () => {
       </Box>
     </Box>
   );
+
+  // return (
+  //   <Box width="100%" d="flex" justifyItems="center">
+  //     <Box backgroundColor="#FA446F" w="50%" d="flex" flexDir="column">
+  //       {/* <Box
+  //         backgroundColor="#82CDDF"
+  //         borderRadius="1.2rem"
+  //         padding=".5rem"
+  //         cursor="pointer"
+  //         textAlign="center"
+  //         d="flex"
+  //         justifyContent="center"
+  //         alignItems="center"
+  //       >
+  //         <Heading size="xl">GET UP TO 50% OFF</Heading>
+  //       </Box>
+
+  //       <Box></Box> */}
+  //     </Box>
+  //     <Box backgroundColor="#FA44" w="50%">
+  //       box 2
+  //     </Box>
+  //   </Box>
+  // );
 };
 
 export default HomePage;

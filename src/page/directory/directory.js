@@ -23,7 +23,7 @@ const Directory = ({ match }) => {
     <>
       {toggleCart && <Cart />}
       <Switch>
-        <Box width="100%" height="100%" py="2.5rem">
+        <Box width="100%" height="100%">
           <Route exact path={match.url} component={Homepage} />
           <Route
             exact
