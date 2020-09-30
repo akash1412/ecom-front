@@ -28,14 +28,12 @@ const CartContextProvider = ({ children }) => {
       },
     });
 
-    console.log(response);
-
     setCartItems([...response.data.data.cartItems]);
   };
 
-  useEffect(() => {
-    getCartItemsFunc();
-  }, []);
+  // useEffect(() => {
+  //   getCartItemsFunc();
+  // }, []);
 
   useEffect(() => {
     const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -96,8 +94,7 @@ const CartContextProvider = ({ children }) => {
         toggleCart,
         handleToggleCartFunc,
         handleRemoveItemFromCart,
-      }}
-    >
+      }}>
       {children}
     </CartContext.Provider>
   );

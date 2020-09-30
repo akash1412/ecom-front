@@ -1,7 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext({
-  name: '',
+  name: "",
   email: null,
   photo: null,
   role: null,
@@ -9,8 +9,15 @@ export const UserContext = createContext({
 });
 
 const UserContextProvider = ({ children }) => {
+  const [userDetails, setUserDetails] = useState({
+    name: "John Doe",
+    email: null,
+    photo: null,
+    role: null,
+  });
+
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('userDetails'));
+    const user = JSON.parse(localStorage.getItem("userDetails"));
 
     if (user) {
       const { name, email } = user;
@@ -18,14 +25,7 @@ const UserContextProvider = ({ children }) => {
     }
 
     console.log(user);
-  }, []);
-
-  const [userDetails, setUserDetails] = useState({
-    name: 'John Doe',
-    email: null,
-    photo: null,
-    role: null,
-  });
+  }, [userDetails]);
 
   const setUser = (userObj) => {
     const { name, email, photo, role } = userObj;
@@ -33,7 +33,7 @@ const UserContextProvider = ({ children }) => {
     setUserDetails({ ...userDetails, name, email, role });
 
     localStorage.setItem(
-      'userDetails',
+      "userDetails",
       JSON.stringify({ name, email, photo, role })
     );
 

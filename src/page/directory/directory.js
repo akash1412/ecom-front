@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 
-import { Box } from "@chakra-ui/core";
 import { Switch, Route } from "react-router-dom";
 
 import { UserContext } from "../../context/userContext/userContext";
@@ -23,21 +22,19 @@ const Directory = ({ match }) => {
     <>
       {toggleCart && <Cart />}
       <Switch>
-        <Box width="100%" height="100%">
-          <Route exact path={match.url} component={Homepage} />
-          <Route
-            exact
-            path={`${match.url}shop/:category`}
-            component={Collection}
-          />
+        <Route exact path={match.url} render={() => <div>homepage</div>} />
+        <Route
+          exact
+          path={`${match.url}shop/:category`}
+          component={Collection}
+        />
 
-          <Route exact path={`${match.url}profile`} component={ProfilePage} />
+        <Route exact path={`${match.url}profile`} component={ProfilePage} />
 
-          <Route exact path={`${match.url}login`} component={Login} />
-          <Route exact path={`${match.url}signup`} component={Signup} />
+        <Route exact path={`${match.url}login`} component={Login} />
+        <Route exact path={`${match.url}signup`} component={Signup} />
 
-          <Route path={`${match.url}add-products`} component={AddProducts} />
-        </Box>
+        <Route path={`${match.url}add-products`} component={AddProducts} />
       </Switch>
     </>
   );

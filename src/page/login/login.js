@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
-import { Box, PseudoBox } from '@chakra-ui/core';
-import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
-import FormInput from '../../components/FormInput/formInput';
-import InputContainer from '../../components/input-container';
-
-import './login.scss';
+import "./login.scss";
 
 const Login = () => {
   const [detail, setDetail] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const { email, password } = detail;
@@ -29,8 +24,8 @@ const Login = () => {
 
     try {
       const resposne = await axios({
-        method: 'POST',
-        url: 'http://localhost:82/api/v1/users/login',
+        method: "POST",
+        url: "http://localhost:82/api/v1/users/login",
         data: { ...detail },
       });
       console.log(resposne);
@@ -40,57 +35,57 @@ const Login = () => {
   };
 
   return (
-    <Box
-      height="80vh"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <form className="form" onSubmit={handleSubmit}>
-        <InputContainer>
-          <AiOutlineMail size="2rem" />
-          <FormInput
-            value={email}
-            name="email"
-            placeholder="Email"
-            type="text"
-            handleChange={handleChange}
-            autoComplete="off"
-            className="input"
-            required
-          />
-        </InputContainer>
-        <InputContainer>
-          <AiOutlineLock size="2rem" />
+    // <Box
+    //   height='80vh'
+    //   display='flex'
+    //   flexDirection='column'
+    //   justifyContent='center'
+    //   alignItems='center'>
+    //   <form className='form' onSubmit={handleSubmit}>
+    //     <InputContainer>
+    //       <AiOutlineMail size='2rem' />
+    //       <FormInput
+    //         value={email}
+    //         name='email'
+    //         placeholder='Email'
+    //         type='text'
+    //         handleChange={handleChange}
+    //         autoComplete='off'
+    //         className='input'
+    //         required
+    //       />
+    //     </InputContainer>
+    //     <InputContainer>
+    //       <AiOutlineLock size='2rem' />
 
-          <FormInput
-            value={password}
-            name="password"
-            placeholder="Password"
-            type="text"
-            handleChange={handleChange}
-            autoComplete="off"
-            className="input"
-            required
-          />
-        </InputContainer>
+    //       <FormInput
+    //         value={password}
+    //         name='password'
+    //         placeholder='Password'
+    //         type='text'
+    //         handleChange={handleChange}
+    //         autoComplete='off'
+    //         className='input'
+    //         required
+    //       />
+    //     </InputContainer>
 
-        <PseudoBox
-          as="button"
-          type="submit"
-          margin="0.3rem"
-          border="none"
-          outline="none"
-          padding="1.2rem 2rem"
-          borderRadius=".5rem"
-          backgroundColor="#fa446f"
-          _hover={{ backgroundColor: '#fa446edc' }}
-        >
-          Login
-        </PseudoBox>
-      </form>
-    </Box>
+    //     <PseudoBox
+    //       as='button'
+    //       type='submit'
+    //       margin='0.3rem'
+    //       border='none'
+    //       outline='none'
+    //       padding='1.2rem 2rem'
+    //       borderRadius='.5rem'
+    //       backgroundColor='#fa446f'
+    //       _hover={{ backgroundColor: "#fa446edc" }}>
+    //       Login
+    //     </PseudoBox>
+    //   </form>
+    // </Box>
+
+    <p>sd</p>
   );
 };
 

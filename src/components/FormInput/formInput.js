@@ -1,16 +1,17 @@
-import React from 'react';
-import './formInput.scss';
+import React from "react";
+
+import { Input } from "@chakra-ui/core";
 
 const FormInput = (props) => {
-  const { value, name, placeholder, type, handleChange, ...otherProps } = props;
+  const { value, name, placeholder, type, handleChange, ...styleProps } = props;
   return (
-    <input
+    <Input
       value={value}
       name={name}
       placeholder={placeholder}
       type={type}
       onChange={handleChange}
-      {...otherProps}
+      {...styleProps}
     />
   );
 };

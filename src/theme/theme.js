@@ -76,7 +76,11 @@ const customTheme = {
   backgroundColor: {
     ...theme.backgroundColors,
     transparent: "transparent",
+    violet: {
+      50: "#3d5af1",
+    },
     black: {
+      20: "#00000040",
       50: "#333644",
       70: "#1c1124",
       100: "#060608",

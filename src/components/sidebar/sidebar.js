@@ -21,44 +21,42 @@ const Sidebar = () => {
 
   return (
     <Box
-      flexBasis={["25rem", "25rem", "25rem", "25rem"]}
-      height="calc(100vh - 5rem)"
+      width={["25rem", "25rem", "25rem", "25rem"]}
+      height='100vh'
       className={toggleSidebar ? "openSidebar" : "closeSidebar"}
-      transition="transform 0.3s"
-      top="5rem"
-      left="0"
-      position={["fixed", "sticky", "sticky", "sticky"]}
-      borderTopRightRadius="10px"
-      borderBottomRightRadius="10px"
-      backgroundColor="black.100"
-      display="flex"
-      flexDir="column"
-      paddingY="1.2rem"
-      pr="1.2rem"
-      paddingLeft="2.5rem"
-      zIndex="4"
-    >
-      <List paddingTop="2rem">
+      transition='transform 0.3s'
+      position={["fixed", "fixed", "fixed", "sticky"]}
+      top='0'
+      left='0'
+      borderTopRightRadius='10px'
+      borderBottomRightRadius='10px'
+      backgroundColor='black.100'
+      display='flex'
+      flexDir='column'
+      paddingY='1.2rem'
+      pr='1.2rem'
+      paddingLeft='2.5rem'
+      zIndex='4'>
+      <List paddingTop='2rem'>
         {Items.map(({ path, icon, name }) => (
-          <ListItem key={name} marginBottom="2rem" cursor="pointer">
+          <ListItem key={name} marginBottom='2rem' cursor='pointer'>
             <Link
               href={path}
-              d="flex"
-              alignItems="center"
+              d='flex'
+              alignItems='center'
               style={{ textDecoration: "none" }}
-              color="gray.50"
+              color='gray.50'
               _active={{ color: "#fff" }}
-              _hover={{ color: "#fff" }}
-            >
-              <Skeleton colorStart="#000" colorEnd="#363434" isLoaded={disIcon}>
+              _hover={{ color: "#fff" }}>
+              <Skeleton colorStart='#000' colorEnd='#363434' isLoaded={disIcon}>
                 <Image
                   src={icon}
-                  size="2.5rem"
-                  marginRight="1rem"
+                  size='2.5rem'
+                  marginRight='1rem'
                   onLoad={() => setDisIcon(true)}
                 />
               </Skeleton>
-              <Heading size="lg" marginLeft=".6rem">
+              <Heading size='lg' marginLeft='.6rem'>
                 {name}
               </Heading>
             </Link>
